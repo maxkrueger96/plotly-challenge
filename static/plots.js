@@ -10,6 +10,8 @@ function fetchData(sample) {
     Object.entries(match).forEach(([key,value]) => {
       dataPanel.append("h5").text(`${key.toUpperCase()}: ${value}`);
     });
+
+    makeGauge(match.wfreq)
   });
 }
 
@@ -40,7 +42,9 @@ function makePlots(sample) {
       title: "Different Kinds of Bacteria in Each Sample",
       xaxis: {title: "Operational Taxonomy Unit ID"},
       margin: {t: 50},
-      yaxis: {title: "Number of Cultures"}
+      yaxis: {title: "Number of Cultures"},
+      width: 1000,
+      height: 500
     };
     var bubbleData = [
       {
@@ -51,7 +55,7 @@ function makePlots(sample) {
         marker: {
           size: sample_vals,
           color: otu_ids,
-          colorscale: "algae"
+          colorscale: "Rainbow"
         }
       }
     ];
